@@ -21,4 +21,5 @@ app.include_router(front_router)
 app.include_router(users_router)
 app.include_router(tg_router)
 app.include_router(task_router)
-    
+
+#https://stackoverflow.com/questions/63511413/fastapi-redirection-for-trailing-slash-returns-non-ssl-link 
