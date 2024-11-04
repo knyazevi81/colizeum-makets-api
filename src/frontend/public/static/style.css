@@ -1,0 +1,134 @@
+body {
+    background-color: #f5eecc;
+    margin: 0;
+    display: flex;
+    flex-direction: column; /* Расположение header и main вертикально */
+    align-items: center; /* Центрирование main по горизонтали */
+    height: 100vh; /* Высота body 100% от высоты окна просмотра */
+}
+
+header {
+    width: 60%;
+    height: 60px;
+    background-color: black;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    padding: 0 20px; 
+}
+
+img {
+    max-height: 100%;
+    max-width: 100%;
+    margin-right: 20px; 
+}
+
+#logout-button {
+    background-color: #FFE665;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#logout-button:hover {
+    background-color: #FFD700; 
+}
+
+main {
+    display: flex;
+    justify-content: center; /* Центрирование окна авторизации по горизонтали */
+    align-items: center; /* Центрирование окна авторизации по вертикали */
+    flex: 1; /* Занять оставшуюся высоту экрана */
+    position: relative; /* Относительное позиционирование для дочерних элементов */
+}
+
+.auth-container {
+    width: 400px;
+    background-color: white; /* Цвет фона окна авторизации */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Тень для эффекта глубины */
+    
+    position: absolute; /* Абсолютное позиционирование для центрирования */
+    top: 50%; /* Половина высоты родительского контейнера */
+    left: 50%; /* Половина ширины родительского контейнера */
+    transform: translate(-50%, -50%); /* Сдвиг на половину ширины и высоты */
+}
+
+h2 {
+    text-align: center; /* Центрирование заголовка */
+}
+
+.input-group {
+    margin: 10px 0; /* Отступы между полями ввода */
+}
+
+label {
+    display: block; /* Каждый элемент label занимает свою строку */
+    margin-bottom: 5px; /* Отступ снизу для label */
+}
+
+input {
+    width: 95%; /* Заполнение ширины контейнера */
+    padding: 10px;
+    border: 1px solid #ccc; /* Состояние по умолчанию для границы */
+    border-radius: 5px; 
+}
+
+button[id="submit"] {
+    width: 100%; /* Заполнение ширины кнопки */
+    padding: 10px;
+    background-color: black; /* Цвет кнопки */
+    color: white; /* Цвет текста на кнопке */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 10px;
+    
+}
+
+button[id="submit"]:hover {
+    background-color: #555; /* Цвет кнопки при наведении */
+}
+
+#tasks-button {
+    background-color: #FFE665;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#tasks-button:hover {
+    background-color: #FFD700; 
+}
+
+#telegram-button {
+
+    background-color: #FFE665;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#telegram-button:hover {
+    background-color: #FFD700; 
+}
+

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>colizeum maket</title>
+    <link rel="stylesheet" type="text/css" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css">
+    <link rel="stylesheet" href="{{ url_for('static', path='style.css') }}">
+    
+    <style>
+        body {
+            background-color: #f5eecc;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;
+        }
+
+        header {
+            width: 60%;
+            height: 60px;
+            background-color: black;
+            border-bottom-right-radius: 10px;
+            border-bottom-left-radius: 20px;
+            display: flex;
+            justify-content: space-between;
+            /* Используем пространство между элементами */
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .container {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+        }
+
+        .container .left {
+            flex: 1;
+            color: white;
+            font-size: 18px;
+        }
+
+        .container .right {
+            display: flex;
+            gap: 10px;
+            /* Добавляем промежуток между кнопками */
+        }
+
+        button {
+            background-color: #FFE665;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #FFD700;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <div class="left">{{ data.fullname }} - {{ data.status }}</div>
+            <div class="right">
+                <button id="telegram-button">Telegram</button>
+                <button id="tasks-button">Tasks</button>
+                <button id="logout-button" style="background-color: rgb(238, 96, 96);">Logout</button>
+            </div>
+        </div>
+    </header>
+    <script>
+        async function logout() {
+            console.log("Logout function called"); // Debug
+            const response = await fetch("/users/logout", {
+                method: "POST",
+                headers: { "Accept": "application/json" },
+                
+            });
+            // Check response status
+            if (response.ok) {
+                console.log("Logout successful");
+                window.location = '/auth';
+            } else {
+                console.error("Logout failed");
+            }
+        }
+
+        async function telegram() {
+            window.location = "/telegram"
+        }
+        async function tasks() {
+            window.location = "/tasks"
+        }
+        document.getElementById('logout-button').addEventListener('click', logout);
+        document.getElementById('telegram-button').addEventListener('click', telegram);
+        document.getElementById('tasks-button').addEventListener('click', tasks);
+        
+    </script>
+    <script type="module" src="{{ url_for('static', path='admin_employes.js') }}"></script>
+</body>
+
+</html>
