@@ -1,5 +1,5 @@
-import requests
 from fastapi import APIRouter, Depends
+import requests
 
 from src.users.models import Users
 from src.users.dependencies import get_current_user
@@ -34,7 +34,7 @@ async def current_tasks(task: ApprTask, current_user: Users = Depends(get_curren
     headers = {
       'Content-Type': 'application/x-www-form-urlencoded'
     }
-    response = requests.request("POST", url, headers=headers, data=payload)
+    response = requests.post(url, headers=headers, data=payload)
 
 
 @router.post('/reject')
