@@ -6,6 +6,7 @@ from fastapi.middleware.httpsredirect import HTTPSRedirectMiddleware
 
 from src.frontend.dependencies import get_current_user
 from src.users.models import Users
+from src.tasks.service import TaskService
 
 router = APIRouter(
     tags=["frontend service"]
@@ -48,4 +49,10 @@ async def dashboard(request: Request, user: Users = Depends(get_current_user)):
     return templates.TemplateResponse("tasks.html", {"request": request, "data": user})
 
 
+@router.get("/tasks/{task_id}")
+async def dashboard(task_id: int, request: Request, user: Users = Depends(get_current_user)):
+    task = TaskService.find_by_id(id=task_id)
+    if user == None:
+        return RedirectResponse("/auth")
+    return templates.TemplateResponse("task.html", {"request": request, "data": user, "task": task})
 

@@ -29,6 +29,9 @@ async function fetchDataAndDisplay() {
 
             const descriptCell = document.createElement('button');
             descriptCell.textContent = "Подробнее";
+            statusCellReject.addEventListener('click', function () {
+                window.location = "/tasks/${task_id}";
+            });
             row.appendChild(descriptCell);
 
             tableBody.appendChild(row);
