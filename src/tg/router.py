@@ -17,7 +17,16 @@ async def get_tg_users():
 
 @router.get("/me")
 async def about_tg_user(tg_id: int):
-    return await TgUserService.find_one_or_none(tg_id=tg_id)
+    data = await TgUserService.find_one_or_none(tg_id=tg_id)
+    if data:
+        return {
+            "status": True,
+            "data": data
+        }
+    return {
+        "status": False,
+        "detail": "User no exist"
+    }
 
 @router.post("/create_user")
 async def create_tg_user(user_data: TgUser):
