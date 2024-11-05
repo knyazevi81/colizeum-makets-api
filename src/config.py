@@ -10,6 +10,8 @@ class Settings(BaseSettings):
     SECRET_KEY: str
     ALG: str
     TG_TOKEN: str
+    ASPRO_API: str
+    ASPRO_URL: str
 
 
     #DATABASE_URL: str = f"postgresql+asyncpg://{DB_USER}:{DB_PASS}@{DB_HOST}:{DB_PORT}/{DB_NAME}"

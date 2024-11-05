@@ -37,7 +37,8 @@ class TaskService(BaseService):
                 TgUsers.nickname,
                 TgUsers.club_id,
                 TgUsers.name,
-                Tasks.task_name
+                Tasks.task_name,
+                Tasks.task_status
             ).join(
                 TgUsers, 
                 Tasks.tguser_id == TgUsers.id
@@ -49,7 +50,7 @@ class TaskService(BaseService):
             # Process the results into the expected format
             task_list = []
             for task in tasks:
-                if task.user_id == id:
+                if task.user_id == id and task.task_status == False:
                     task_dict = {
                         'task_id': task.id,
                         'nickname': task.nickname,
@@ -60,6 +61,17 @@ class TaskService(BaseService):
                     task_list.append(task_dict)
 
             return task_list
+    
+    @classmethod
+    async def approve_task(cls, id: int):
+        async with async_session_maker() as session:
+            query = select(cls.model).filter_by(id=id)
+            result = await session.execute(query)
+            task = result.scalar_one_or_none()
+            if task:
+                task.task_status = True
+                await session.commit()
+            return task
 
 
             

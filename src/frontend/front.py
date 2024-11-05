@@ -51,8 +51,13 @@ async def dashboard(request: Request, user: Users = Depends(get_current_user)):
 
 @router.get("/tasks/{task_id}")
 async def dashboard(task_id: int, request: Request, user: Users = Depends(get_current_user)):
-    task = await TaskService.find_by_id(task_id)
-    if user == None:
+    try:
+        task = await TaskService.find_by_id(task_id)
+    except:
+        return RedirectResponse("/tasks")
+    
+    if user == None or task == None:
         return RedirectResponse("/auth")
+
     return templates.TemplateResponse("task.html", {"request": request, "data": user, "task": task})
 

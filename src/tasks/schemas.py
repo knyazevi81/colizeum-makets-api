@@ -6,3 +6,7 @@ class AddTask(BaseModel):
     task_status: bool = False
     task_name: str
     task_description: str
+
+
+class ApprTask(BaseModel):
+    id: int

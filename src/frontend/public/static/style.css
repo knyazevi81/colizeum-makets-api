@@ -18,6 +18,14 @@ header {
     justify-content: center;
     align-items: center;
 }
+main {
+    width: 60%;
+    height: 30px;
+    margin-top: 20px;
+    border-radius: 5%;
+    justify-content: space-between;
+    background-color: #ffffff;
+}
 
 .container {
     display: flex;
